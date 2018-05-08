@@ -1,0 +1,5 @@
+.DS_Store
+
+/* typescript */
+/typescript/dist
+/typescript/node_modules
