@@ -3,3 +3,7 @@
 /* typescript */
 /typescript/dist
 /typescript/node_modules
+
+/* rust */
+/rust/**/target
+/rust-tutorial/**/target
