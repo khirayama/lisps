@@ -7,3 +7,6 @@
 /* rust */
 /rust/**/target
 /rust-tutorial/**/target
+
+/* python */
+/python/**/*.pyc
