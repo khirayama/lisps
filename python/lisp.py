@@ -18,13 +18,17 @@ List   = list             # A Scheme List is implemented as a Python list
 
 # Parsing: parse, tokenize and read_from_tokens
 
-def parse(program):
-    "Read a Scheme expression from a string."
-    return read_from_tokens(tokenize(program))
-
 def tokenize(chars):
     "Convert a string of characters into a list of tokens."
     return chars.replace('(', ' ( ').replace(')', ' ) ').split()
+
+def atom(token):
+    "Numbers become numbers; every other token is a symbol."
+    try: return int(token)
+    except ValueError:
+        try: return float(token)
+        except ValueError:
+            return Symbol(token)
 
 def read_from_tokens(tokens):
     "Read an expression from a sequence of tokens."
@@ -42,16 +46,21 @@ def read_from_tokens(tokens):
     else:
         return atom(token)
 
-def atom(token):
-    "Numbers become numbers; every other token is a symbol."
-    try: return int(token)
-    except ValueError:
-        try: return float(token)
-        except ValueError:
-            return Symbol(token)
+def parse(program):
+    "Read a Scheme expression from a string."
+    return read_from_tokens(tokenize(program))
 
 
 # Environments
+
+class Env(dict):
+    "An environment: a dict of {'var': val} pairs, with an outer Env."
+    def __init__(self, parms=(), args=(), outer=None):
+        self.update(zip(parms, args))
+        self.outer = outer
+    def find(self, var):
+        "Find the innermost Env where var appears."
+        return self if (var in self) else self.outer.find(var)
 
 def standard_env():
     "An environment with some Scheme standard procedures."
@@ -89,7 +98,7 @@ def standard_env():
 
 # Interaction: A REPL
 
-def repl(prompt='lis.py> '):
+def repl(prompt='lisp> '):
     "A prompt-read-eval-print loop."
     while True:
         val = eval(parse(raw_input(prompt)))
@@ -105,15 +114,6 @@ def schemestr(exp):
 
 
 # Procedures
-
-class Env(dict):
-    "An environment: a dict of {'var': val} pairs, with an outer Env."
-    def __init__(self, parms=(), args=(), outer=None):
-        self.update(zip(parms, args))
-        self.outer = outer
-    def find(self, var):
-        "Find the innermost Env where var appears."
-        return self if (var in self) else self.outer.find(var)
 
 class Procedure(object):
     "A user-defined Scheme procedure."
