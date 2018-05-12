@@ -10,3 +10,8 @@
 
 /* python */
 /python/**/*.pyc
+
+/* kotlin */
+/kotlin/**/*.jar
+/kotlin/**/*.class
+/kotlin/META-INF
