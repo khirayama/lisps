@@ -15,3 +15,8 @@
 /kotlin/**/*.jar
 /kotlin/**/*.class
 /kotlin/META-INF
+
+/* java */
+/java/**/*.jar
+/java/**/*.class
+/java/META-INF
