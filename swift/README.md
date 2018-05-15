@@ -1,6 +1,6 @@
 # Swift
 
-A description of this package.
+https://swift.org/getting-started/#using-the-package-manager
 
 ```
 $ swift package init --type executable
