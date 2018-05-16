@@ -1,13 +1,19 @@
 ## Lisps
 
 ```
+(+ 1 1)
+# -> 2
+(equal? 1 1)
+# -> True
 (begin (define r 10) (* pi (* r r)))
+# -> 314.159265359
 ```
 
 ### Lisp
 
 - [Lisp入門](http://wisdom.sakura.ne.jp/programming/lisp/index.html)
 - [JavaScriptでLispインタープリターを作ろう(1)](http://enterprisegeeks.hatenablog.com/entry/2014/08/18/115000)
+- [Make a Lisp で Lisp 処理系を学んでつくる (with Crystal)](https://rhysd.hatenablog.com/entry/2015/06/11/212141)
 
 ### Python
 
