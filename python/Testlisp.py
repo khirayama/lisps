@@ -45,12 +45,26 @@ class TestLispParsing(unittest.TestCase):
         self.assertEqual(expected, actual)
 
 
-class TestLispaEnvironments(unittest.TestCase):
-    "Test class of lisp environments"
+class TestLisp(unittest.TestCase):
+    "Test class of lisp"
 
-    def test_lisp_Env(self):
-        "Test for lisp.Env"
-        env = lisp.Env()
+    def test_lisp_add(self):
+        input = '(+ 1 1)'
+        expected = 2
+        actual = lisp.eval(lisp.parse(input))
+        self.assertEqual(expected, actual)
+
+    def test_lisp_equal(self):
+        input = '(equal? 1 1)'
+        expected = True
+        actual = lisp.eval(lisp.parse(input))
+        self.assertEqual(expected, actual)
+
+    def test_lisp_begin(self):
+        input = '(begin (define r 10) (* pi (* r r)))'
+        expected = 314.1592653589793
+        actual = lisp.eval(lisp.parse(input))
+        self.assertEqual(expected, actual)
 
 if __name__ == "__main__":
     unittest.main()
