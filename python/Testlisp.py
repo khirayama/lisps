@@ -48,9 +48,49 @@ class TestLispParsing(unittest.TestCase):
 class TestLisp(unittest.TestCase):
     "Test class of lisp"
 
-    def test_lisp_add(self):
-        input = '(+ 1 1)'
-        expected = 2
+    def test_lisp_expression(self):
+        input = '(+ 10 20)'
+        expected = 30
+        actual = lisp.eval(lisp.parse(input))
+        self.assertEqual(expected, actual)
+
+        input = '(- 10 20)'
+        expected = -10
+        actual = lisp.eval(lisp.parse(input))
+        self.assertEqual(expected, actual)
+
+        input = '(* 5 12)'
+        expected = 60
+        actual = lisp.eval(lisp.parse(input))
+        self.assertEqual(expected, actual)
+
+        input = '(/ 30 5)'
+        expected = 6
+        actual = lisp.eval(lisp.parse(input))
+        self.assertEqual(expected, actual)
+
+        # input = '(+ 1 2 3 4 5)'
+        # expected = 15
+        # actual = lisp.eval(lisp.parse(input))
+        # self.assertEqual(expected, actual)
+
+        # input = '(- 100 10 1)'
+        # expected = 89
+        # actual = lisp.eval(lisp.parse(input))
+        # self.assertEqual(expected, actual)
+
+        # input = '(* 1 2 3 4 5)'
+        # expected = 120
+        # actual = lisp.eval(lisp.parse(input))
+        # self.assertEqual(expected, actual)
+
+        # input = '(/ 100 10 2)'
+        # expected = 5
+        # actual = lisp.eval(lisp.parse(input))
+        # self.assertEqual(expected, actual)
+
+        input = '(+ (* 5 3) 5)'
+        expected = 20
         actual = lisp.eval(lisp.parse(input))
         self.assertEqual(expected, actual)
 
