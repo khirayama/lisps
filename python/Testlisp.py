@@ -94,6 +94,17 @@ class TestLisp(unittest.TestCase):
         actual = lisp.eval(lisp.parse(input))
         self.assertEqual(expected, actual)
 
+    # def test_lisp_number(self):
+        # input = '#3r22'
+        # expected = 8
+        # actual = lisp.eval(lisp.parse(input))
+        # self.assertEqual(expected, actual)
+
+        # input = '(/ 1 2)'
+        # expected = 1 / 2
+        # actual = lisp.eval(lisp.parse(input))
+        # self.assertEqual(expected, actual)
+
     def test_lisp_equal(self):
         input = '(equal? 1 1)'
         expected = True
