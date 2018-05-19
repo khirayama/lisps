@@ -117,5 +117,13 @@ class TestLisp(unittest.TestCase):
         actual = lisp.eval(lisp.parse(input))
         self.assertEqual(expected, actual)
 
+    def test_lisp_define(self):
+        input = '(define circle-area (lambda (r) (* pi (* r r))))'
+        expected = 314.1592653589793
+        lisp.eval(lisp.parse(input))
+        input = '(circle-area (+ 5 5))'
+        actual = lisp.eval(lisp.parse(input))
+        self.assertEqual(expected, actual)
+
 if __name__ == "__main__":
     unittest.main()
